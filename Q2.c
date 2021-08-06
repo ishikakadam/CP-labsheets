@@ -1,15 +1,21 @@
 #include <stdio.h>
+int x = -1, y = -2, z = -3;
+void f1 (int x, int z)
+{
+y = ++x + --z + (y+=2);
+printf("%d %d %d\n",x,y,z);
+}
 int main()
 {
-float f;
-printf("Sizeof (char) = %lu bytes\n", sizeof(char)); // datatype
-printf("Sizeof (short)= %lubytes\n", sizeof(short));
-printf("Sizeof (int)= %lu bytes\n", sizeof(int));
-printf("Sizeof (long)= %lu bytes\n", sizeof(long));
-printf("Sizeof (float)= %lu bytes\n", sizeof(f)); // variable
-printf("Sizeof (double)= %lu bytes\n", sizeof(double));
-printf("Sizeof (1.55)= %lu bytes\n", sizeof(1.55)); // constant
-printf("Sizeof (1.55L)= %lu bytes\n", sizeof(1.55L));
-printf("Sizeof (str)= %lu bytes\n", sizeof("Hello")); // string
-return 0;
+int z = 3;
+x += y += ++z;
+printf("%d %d %d\n", x, y, z);
+f1(x,z);
+{ /* new block begins */
+float y = 4.0;
+int x = 0;
+x += z = 5 * y;
+printf("%d %.2f %d\n", x, y, z);
+ } /* end of block */
+printf("%d %d %d\n", x, y, z);
 }
